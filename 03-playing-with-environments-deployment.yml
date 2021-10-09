@@ -34,16 +34,7 @@ stages:
      runOnce:
        deploy:
         steps:
-          - script: echo "deploy to QA"
-         
- 
-   
+          - script: echo "deploy to QA"  
 
-  
-
-  
-steps:
- - script: echo Runnin on $(operatingSystem)
-   displayName: 'Run a one-line script'
 
 
