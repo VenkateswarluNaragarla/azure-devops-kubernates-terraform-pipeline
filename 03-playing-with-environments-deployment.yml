@@ -11,7 +11,7 @@ pool:
 
 
 steps:
-- script: echo Runnin on the operating system!
+- script: echo Runnin on $(operatingSystem)
   displayName: 'Run a one-line script'
 
 
