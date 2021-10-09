@@ -11,8 +11,20 @@ stages:
     steps:
     - bash: echo Build FirstJob
     - bash: echo ${PipelineLevelVariable}
-    - bash: echo $Build.BuildNumber
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
     - bash: java -version
+    - bash: node --version
+    - bash: mvn --version
+    - bash: python --version
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '${System.DefaultWorkingDirectory}'
+        Contents: '**/*.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
