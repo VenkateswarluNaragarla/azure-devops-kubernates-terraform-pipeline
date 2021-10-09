@@ -11,7 +11,7 @@ stages:
     steps:
     - bash: echo Build FirstJob
     - bash: echo ${PipelineLevelVariable}
-    - bash: echo $Build.BuildId
+    - bash: echo ${System.DefaultWorkingDirectory}
   # - job: SecondJob
   #   steps:
   #   - bash: echo Build SecondJob
