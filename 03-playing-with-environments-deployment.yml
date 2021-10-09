@@ -13,30 +13,37 @@ pool:
 
 stages:
 - stage: Build
-  jobs: 
+  jobs:
   - job: BuildJob
-    steps:
-    - bash: echo "Do the build"
+    steps: 
+    - bash: echo "Do build"
 - stage: DevDeploy
   jobs: 
-  - deployment:DevDeploymentJob
-  - environment: Dev
-    strataegy:
-      runOnce:
-        deploy:
-          steps:
-          - scripts: echo deploy to dev
+  - deployment: DevDeploymentJob
+    environment: dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo "deploy to dev"
 - stage: QADeploy
   jobs: 
-  - deployment:QADeploymentJob
-  - environment: QA
-    strataegy:
-      runOnce:
-        deploy:
-          steps:
-          - scripts: echo deploy to QA
+  - deployment: QADeploymentJob
+    environment: QA
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo "deploy to QA"
+         
+ 
+   
+
+  
+
+  
 steps:
-- script: echo Runnin on $(operatingSystem)
-  displayName: 'Run a one-line script'
+ - script: echo Runnin on $(operatingSystem)
+   displayName: 'Run a one-line script'
 
 
