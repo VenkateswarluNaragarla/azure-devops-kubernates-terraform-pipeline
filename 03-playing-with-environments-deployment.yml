@@ -18,7 +18,7 @@ stages:
     steps:
     - bash: echo "Do the build"
 - stage: DevDeploy
-  Jobs: 
+  jobs: 
   - deployment:DevDeploymentJob
   - environment: Dev
     strataegy:
@@ -27,7 +27,7 @@ stages:
           steps:
           - scripts: echo deploy to dev
 - stage: QADeploy
-  Jobs: 
+  jobs: 
   - deployment:QADeploymentJob
   - environment: QA
     strataegy:
